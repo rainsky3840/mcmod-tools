@@ -1,8 +1,8 @@
 import vec3d, re
 
-searchlist1 = ['AddPartCanopy', 'AddPartHatch', 'AddPartLG', 'AddPartLGHatch', 'AddPartLGHatch', 'AddPartLGRev', 'AddPartNozzle', 'AddPartRotor', 'AddPartSlideHatch', 'AddPartSteeringWheel', 'AddPartThrottle', 'AddPartWheel', 'AddPartWing', 'AddParticleSplash', 'AddSeat', 'BoundingBox', 'CameraPosition', 'AddFixedSearchLight']
+searchlist1 = ['AddPartCanopy', 'AddPartHatch', 'AddPartLG', 'AddPartLGHatch', 'AddPartLGRev', 'AddPartNozzle', 'AddPartRotor', 'AddPartSlideHatch', 'AddPartSteeringWheel', 'AddPartThrottle', 'AddPartWheel', 'AddPartWing', 'AddParticleSplash', 'AddSeat', 'BoundingBox', 'CameraPosition', 'AddFixedSearchLight', 'AddRepellingHook']
 searchlist2 = ['AddWeapon', 'AddPartWeaponBay']
-searchlist3 = ['AddGunnerSeat', 'AddPartSlideRotLG'] 
+searchlist3 = ['AddGunnerSeat', 'AddPartSlideRotLG']
 searchlist4 = ['AddPartWeaponMissile', 'AddPartRotWeapon', 'AddPartWeaponChild', 'AddPartWeapon']
 searchlist5 = ['AddBlade', 'AddRotor']
 
@@ -15,7 +15,7 @@ pattern3 = r'=\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*),?\s*([-+]?
 # 4. Name = true, false, [optional]true, (0.0, 0.0, 0.0)
 pattern4 = r'\w+\s*=\s*[\w\/\s-]+,\s*(?:false,\s*|true,\s*){1,3}([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)'
 # 5. Name = Parameter = 1, 0, (0.0, 0.0, 0.0)
-pattern5 = r'\w+\s*=\s*[-+]?[01]\s*,\s*[-+]?[01]\s*,\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)'
+pattern5 = r'\w+\s*=\s*[-+]?\d+\s*,\s*[-+]?\d+\s*,\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)'
 
 #lists of parameters, patterns to loop
 searchlists = [searchlist1, searchlist2, searchlist3, searchlist4, searchlist5]
@@ -122,8 +122,14 @@ for line_idx, line in enumerate(text):
 #save, view, and exit
 print('** OPERATION COMPLETED')
 while True:
-  savechoice = input('>> Save File(S) / View File(V) / Exit Program: ')
-  if savechoice in ('V', 'v'):
+  savechoice = input('>> Save File(S) / View File(V) / Working Parameters(W) / Exit Program: ')
+  if savechoice in ('W', 'w'):
+    all_params=[]
+    for i in searchlists:
+      all_params.extend(i)
+      all_params.sort()
+    print('** Parameters supported: ', all_params)
+  elif savechoice in ('V', 'v'):
     for each in text:
       print(each, end='')
     print('')
