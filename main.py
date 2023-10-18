@@ -1,15 +1,15 @@
 import vec3d, re
 
-searchlist1 = ['AddPartCanopy', 'AddPartHatch', 'AddPartLG', 'AddPartLGHatch', 'AddPartLGRev', 'AddPartNozzle', 'AddPartRotor', 'AddPartSlideHatch', 'AddPartSteeringWheel', 'AddPartThrottle', 'AddPartWheel', 'AddPartWing', 'AddParticleSplash', 'AddSeat', 'BoundingBox', 'CameraPosition', 'AddFixedSearchLight', 'AddRepellingHook']
-searchlist2 = ['AddWeapon', 'AddPartWeaponBay']
+searchlist1 = ['AddFixedSearchLight', 'AddPartCamera', 'AddPartCanopy', 'AddPartHatch', 'AddPartLG', 'AddPartLGHatch', 'AddPartLGRev', 'AddPartLightHatch', 'AddPartNozzle', 'AddPartRotation', 'AddPartRotor', 'AddPartSlideHatch', 'AddPartSteeringWheel', 'AddPartThrottle', 'AddPartWheel', 'AddPartWing', 'AddParticleSplash', 'AddRepellingHook', 'AddSearchLight', 'AddSeat', 'AddSteeringSearchLight', 'BoundingBox', 'CameraPosition', 'TurretPosition']
+searchlist2 = ['AddWeapon', 'AddPartWeaponBay', 'AddPartSlideWeaponBay', 'AddRack']
 searchlist3 = ['AddGunnerSeat', 'AddPartSlideRotLG']
-searchlist4 = ['AddPartWeaponMissile', 'AddPartRotWeapon', 'AddPartWeaponChild', 'AddPartWeapon']
+searchlist4 = ['AddPartWeaponMissile', 'AddPartRotWeapon', 'AddPartTurretWeapon', 'AddPartWeaponChild', 'AddPartWeapon']
 searchlist5 = ['AddBlade', 'AddRotor']
 
 # 1. Name = (0.0, 0.0, 0.0)
 pattern1 = r'=\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)'
-# 2. Name = weapon [optional]/weapon/weapon, (0.0, 0.0, 0.0)
-pattern2 = r'\w+\s*=\s*[\w\/\s-]+,\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)'
+# 2. Name = weapon [optional]/weapon/weapon, (0.0, 0.0, 0.0), [optional](0.0, 0.0, 0.0)
+pattern2 = r'\w+\s*=\s*(?:[\w\/\s-]+,)?\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*),?\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)?'
 # 3. Name = (0.0, 0.0, 0.0), [optional](0.0, 0.0, 0.0)
 pattern3 = r'=\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*),?\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)?'
 # 4. Name = true, false, [optional]true, (0.0, 0.0, 0.0)
@@ -52,7 +52,7 @@ def calc(vector):
     print(f'Calculated: {vector} => Move => [{v_result}]')
     return v_result
 
-print('▶▶ MCHELI RESIZER - RAINWIND ◀◀')
+print('▶▶ MCHELI CONFIG RESIZER - MADE BY RAINWIND ◀◀')
 
 #open file
 while True:
