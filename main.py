@@ -7,15 +7,15 @@ searchlist4 = ['AddPartWeaponMissile', 'AddPartRotWeapon', 'AddPartTurretWeapon'
 searchlist5 = ['AddBlade', 'AddRotor']
 
 # 1. Name = (0.0, 0.0, 0.0)
-pattern1 = r'=\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)'
+pattern1 = re.compile(r"=\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)")
 # 2. Name = weapon [optional]/weapon/weapon, (0.0, 0.0, 0.0), [optional](0.0, 0.0, 0.0)
-pattern2 = r'\w+\s*=\s*(?:[\w\/\s-]+,)?\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*),?\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)?'
+pattern2 = re.compile(r"\w+\s*=\s*(?:[\w\/\s-]+,)?\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*),?\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)?")
 # 3. Name = (0.0, 0.0, 0.0), [optional](0.0, 0.0, 0.0)
-pattern3 = r'=\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*),?\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)?'
+pattern3 = re.compile(r"=\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*),?\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)?")
 # 4. Name = true, false, [optional]true, (0.0, 0.0, 0.0)
-pattern4 = r'\w+\s*=\s*[\w\/\s-]+,\s*(?:false,\s*|true,\s*){1,3}([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)'
+pattern4 = re.compile(r"\w+\s*=\s*[\w\/\s-]+,\s*(?:false,\s*|true,\s*){1,3}([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)")
 # 5. Name = Parameter = 1, 0, (0.0, 0.0, 0.0)
-pattern5 = r'\w+\s*=\s*[-+]?\d+\s*,\s*[-+]?\d+\s*,\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)'
+pattern5 = re.compile(r"\w+\s*=\s*[-+]?\d+\s*,\s*[-+]?\d+\s*,\s*([-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*,\s*[-+]?\d+\.?\d*)")
 
 #lists of parameters, patterns to loop
 searchlists = [searchlist1, searchlist2, searchlist3, searchlist4, searchlist5]
@@ -54,7 +54,6 @@ def calc(vector):
 
 print('▶▶ MCHELI CONFIG RESIZER - MADE BY RAINWIND ◀◀')
 
-#open file
 while True:
   try:
     openfile = input('>> Open file (can include directory, don\'t include .txt): ') + '.txt'
@@ -65,7 +64,6 @@ while True:
   except FileNotFoundError:
     print('** File not found! Please try a different file.')
 
-#get scale/move variables
 while True:
   try:
     choice = input('>> 1. Scale / 2. Move : ')
@@ -82,15 +80,14 @@ while True:
       print('** Please choose between 1(Scale) and 2(Move)!')
   except:
     print('** Error Encountered! Please input correctly.')
-print('')
+print('-'*30, end='\n\n')
 
-#main loop
 for line_idx, line in enumerate(text):
   for (head, ptn) in zip(headers, patterns):
     if head.match(line):
       print(f'Line {line_idx} : {line.strip()}')
       # print('Matching Header:', head.match(line).group())
-      matches = re.findall(ptn, line)
+      matches = ptn.findall(line)
       
       #single match: ['a,b,c'] / multiple matches: [('a,b,c','a,b,c')]
       if (matches[0]).__class__ == tuple:
@@ -119,10 +116,11 @@ for line_idx, line in enumerate(text):
       print('FINAL:', line, end='')
       print()
 
-#save, view, and exit
 print('** OPERATION COMPLETED')
 while True:
+  print('-'*30)
   savechoice = input('>> Save File(S) / View File(V) / Working Parameters(W) / Exit Program: ')
+  print('-'*30)
   if savechoice in ('W', 'w'):
     all_params=[]
     for i in searchlists:
