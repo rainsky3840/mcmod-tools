@@ -1,11 +1,14 @@
 # mcheli-rescaler
-* automated text file editor for scaling and moving mcheli models
-* currently supports planes and helicopters
+* Automated text file editor for scaling and moving mcheli models.
+* Currently supports planes and helicopters only.
 
 ## how to run
-### If you have Python installed
-- run main.py
-> main.py and vec3d.py must be in the same folder
-### If Python is not installed
-* run the included .exe file
-> pre-compiled with pyinstaller
+- Run main.py
+- Alternatively, download .exe file from releases.
+
+## user input guide
+- Assumes you already scaled or moved the model in the modeling software.
+- When prompted to open/save txt file: "../planes/f-16"
+> File path is supported. The ".txt" file extension will be automatically recognized.
+- When prompted to input coordinates(Origin, Move): "0, -0.3, 0"
+> Must be three numbers separated by commas.
