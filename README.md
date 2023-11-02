@@ -4,7 +4,7 @@
 
 ## how to run
 - Run main.py (needs python install)
-- Download .exe file from releases (recommended)
+- Download .exe file from releases
 
 ## user input guide
 - Assumes you already scaled or moved the model in the modeling software.
