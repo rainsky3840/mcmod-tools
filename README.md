@@ -1,10 +1,12 @@
-# mcheli-rescaler
+# mts-tools
+* Tools to configure vehicles for minecraft mods easier.
+
+## mcheli rescaler
 * Automated text file editor for scaling and moving mcheli models.
 * Currently supports planes and helicopters only.
 
-## how to run
-- Run main.py (needs python install)
-- Download .exe file from releases
+## mts hitbox exporter
+* Exports collision groups from mqo to json format for use in MTS mod.
 
 ## user input guide
 - Assumes you already scaled or moved the model in the modeling software.
