@@ -7,3 +7,4 @@
 
 ## mts hitbox exporter
 * Exports collision groups from mqo to json format for use in MTS mod
+* Supports .mqo and .bbmodel files
