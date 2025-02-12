@@ -9,13 +9,13 @@ class Calculate:
     self.dx = self.p1[0] + (self.p2[0] - self.p1[0])/2
     self.dy = self.p1[1] + (self.p2[1] - self.p1[1])/2
     self.dz = self.p1[2] + (self.p2[2] - self.p1[2])/2
-    return [self.dx*0.0625, self.dy*0.0625, self.dz*0.0625]
+    return [round(self.dx*0.0625, 4), round(self.dy*0.0625, 4), round(self.dz*0.0625, 4)]
   
   def getDimensions(self):
     self.dx = self.p2[0] - self.p1[0]
     self.dy = self.p2[1] - self.p1[1]
     self.dz = self.p2[2] - self.p1[2]
-    return [self.dx*0.0625, self.dy*0.0625, self.dz*0.0625]
+    return [round(self.dx*0.0625, 4), round(self.dy*0.0625, 4), round(self.dz*0.0625, 4)]
 
 print('# Blockbench to MTS Hitbox Exporter - Rainwind')
 while True:
